@@ -7,18 +7,40 @@ public class Task01 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number");
-
+        
         try {
             int number = scanner.nextInt();
             evenOrOdd(number);
-            if (isPrime(number)) {
-                System.out.println("It's simple number");
+            
+            if (number < 2) {
+                System.out.println("Это не простое число");
+                System.out.println("Это не составное число");
             } else {
-                if (number > 2) System.out.println("It's complex number");
+                String result = "Это простое число";
+                for (int i = 2; i < number; i++) {
+                    if (number % i == 0) {
+                        result = "Это составное число";
+                        break;
+                    }
+                }
+                System.out.println(result);
             }
+            
         } catch (InputMismatchException e) {
             System.out.println("Wrong number");
         }
+
+//         try {
+//             int number = scanner.nextInt();
+//             evenOrOdd(number);
+//             if (isPrime(number)) {
+//                 System.out.println("It's simple number");
+//             } else {
+//                 if (number > 2) System.out.println("It's complex number");
+//             }
+//         } catch (InputMismatchException e) {
+//             System.out.println("Wrong number");
+//         }
 
         scanner.close();
     }
@@ -28,11 +50,11 @@ public class Task01 {
         else System.out.println("It's odd number");
     }
 
-    public static boolean isPrime(int number) {
-        if (number < 2) return false;
-        for (int i = 2; i*i <= number; i++) {
-            if (number % i == 0) return false;
-        }
-        return true;
-    }
+//     public static boolean isPrime(int number) {
+//         if (number < 2) return false;
+//         for (int i = 2; i*i <= number; i++) {
+//             if (number % i == 0) return false;
+//         }
+//         return true;
+//     }
 }
